@@ -1,0 +1,68 @@
+{"frames": [
+
+{
+	"filename": "emotion0",
+	"frame": {"x":2,"y":2,"w":282,"h":383},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":464,"y":521,"w":282,"h":383},
+	"sourceSize": {"w":1204,"h":2736}
+},
+{
+	"filename": "emotion1",
+	"frame": {"x":287,"y":2,"w":282,"h":383},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":464,"y":521,"w":282,"h":383},
+	"sourceSize": {"w":1204,"h":2736}
+},
+{
+	"filename": "emotion2",
+	"frame": {"x":572,"y":2,"w":282,"h":383},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":464,"y":521,"w":282,"h":383},
+	"sourceSize": {"w":1204,"h":2736}
+},
+{
+	"filename": "emotion3",
+	"frame": {"x":857,"y":2,"w":282,"h":383},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":464,"y":521,"w":282,"h":383},
+	"sourceSize": {"w":1204,"h":2736}
+},
+{
+	"filename": "emotion4",
+	"frame": {"x":1142,"y":2,"w":282,"h":383},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":464,"y":521,"w":282,"h":383},
+	"sourceSize": {"w":1204,"h":2736}
+},
+{
+	"filename": "emotion5",
+	"frame": {"x":1427,"y":2,"w":282,"h":383},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":464,"y":521,"w":282,"h":383},
+	"sourceSize": {"w":1204,"h":2736}
+},
+{
+	"filename": "emotion6",
+	"frame": {"x":1712,"y":2,"w":282,"h":383},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":464,"y":521,"w":282,"h":383},
+	"sourceSize": {"w":1204,"h":2736}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "emotions.png",
+	"format": "RGBA8888",
+	"size": {"w":1996,"h":387},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f72502b3676f488a8ce2f452199d22e7:470c190b6edb6d7bf87ebc70a537c1e7:a6f57c18513969c96e812d6ce14ccaca$"
+}
+}

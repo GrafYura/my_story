@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "bag0",
+	"frame": {"x":340,"y":1146,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1204,"h":2736}
+},
+{
+	"filename": "bag1",
+	"frame": {"x":2,"y":2,"w":335,"h":1269},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":396,"y":632,"w":335,"h":1269},
+	"sourceSize": {"w":1204,"h":2736}
+},
+{
+	"filename": "bag2",
+	"frame": {"x":340,"y":2,"w":278,"h":1141},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":359,"y":482,"w":278,"h":1141},
+	"sourceSize": {"w":1204,"h":2736}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bags.png",
+	"format": "RGBA8888",
+	"size": {"w":620,"h":1273},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a320816db991b39dba3a126e08b03db9:b70a75b2a6dafc728946539933b8bfbc:937183dd4c747693e96e2bc698c86b1f$"
+}
+}

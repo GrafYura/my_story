@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "clothesTop0",
+	"frame": {"x":2,"y":949,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1204,"h":2736}
+},
+{
+	"filename": "clothesTop1",
+	"frame": {"x":2,"y":621,"w":259,"h":325},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":195,"y":1090,"w":259,"h":325},
+	"sourceSize": {"w":1204,"h":2736}
+},
+{
+	"filename": "clothesTop2",
+	"frame": {"x":2,"y":2,"w":259,"h":616},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":175,"y":951,"w":259,"h":616},
+	"sourceSize": {"w":1204,"h":2736}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "clothesTop.png",
+	"format": "RGBA8888",
+	"size": {"w":263,"h":954},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:23ec9431b7280173180fc51e026595a2:919fc9e4d37d4575a2bf0b59c64d6b62:b8afc25021c62da6ad9b5ce135e298da$"
+}
+}

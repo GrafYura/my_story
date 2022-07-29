@@ -30,7 +30,6 @@ class Girl extends Boy{
 
 	}
 	initAdditional(){
-		console.log('additional')
 		this.initClothes();
 		this.initAccessory();
 		this.initBag()

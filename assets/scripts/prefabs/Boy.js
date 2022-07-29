@@ -11,7 +11,7 @@ class Boy extends Phaser.GameObjects.Sprite {
 	}
 	updateOne(target){
 		let prop = getProp();
-		let offsetY = (prop.propDif<0)?(this.data.scene.sys.game.config.height*(1-prop.proph)/2):0;
+		let offsetY = (prop.propDif<0)?(this.data.scene.sys.game.config.height*(1-prop.proph)/2)-40:0;
 		target.y = this.data.y + offsetY;
 	}
 	update(){
@@ -22,7 +22,6 @@ class Boy extends Phaser.GameObjects.Sprite {
 
 	initBody(){
 		this.prepare(this);
-		this.update();
 		this.data.scene.scale.on('resize', this.onResize, this)
 	}
 

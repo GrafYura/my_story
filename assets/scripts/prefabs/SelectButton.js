@@ -19,7 +19,6 @@ class SelectButton extends Phaser.GameObjects.Sprite{
 	}
 	onResize(){
 		this.update();
-		console.log('resize')
 	}
 	update(){
 		let prop = getProp();

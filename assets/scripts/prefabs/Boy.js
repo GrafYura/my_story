@@ -6,8 +6,11 @@ class Boy extends Phaser.GameObjects.Sprite {
 	}
 
 	prepare(target){
-		target.setScale(this.scale);
-		target.setOrigin(0.5,1);
+		target.setScale(this.defScale);
+		target.setOrigin(0.5)
+		this.data.y=this.data.scene.sys.game.config.height-(this.height*this.defScale/2)
+		target.y=this.data.y;
+
 	}
 	updateOne(target){
 		let prop = getProp();
@@ -53,8 +56,16 @@ class Boy extends Phaser.GameObjects.Sprite {
 	setEmotion(n){
 		this.emotion.setFrame(`emotion${n}`)
 	}
+	littleBitZoom(){
+		this.data.scene.tweens.add({
+			targets: [this, this.hair, this.emotion, this.clothes, this.clothesTop, this.accessories, this.bags],
+			scale: this.defScale+0.05,
+			ease: 'Linear',
+			duration:200
+		});
+	}
 	init(){
-		this.scale = this.data.scene.sys.game.config.height/this.height;
+		this.defScale = this.data.scene.sys.game.config.height/this.height;
 		this.data.scene.add.existing(this);
 		this.initBody();
 		this.initEmotion();

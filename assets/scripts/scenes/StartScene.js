@@ -3,17 +3,18 @@ class StartScene extends Phaser.Scene {
 		super("Start");
 	}
 	createBg(){
-		console.log()
 		this.bg = this.add.sprite(this.sys.game.config.width/2, this.sys.game.config.height/2, 'bg', 'bg0').setOrigin(0.5);
 	}
-	addChar(){
-		// this.paul = Boy.generate({
-		// 	scene:this,
-		// 	x:this.sys.game.config.width/2, 
-		// 	y:this.sys.game.config.height/2,
-		// 	texture: 'paulBody',
-		// 	char:'paul'
-		// });
+	addPaul(){
+		this.paul = Boy.generate({
+			scene:this,
+			x:this.sys.game.config.width/2, 
+			y:this.sys.game.config.height,
+			texture: 'paulBody',
+			char:'paul'
+		});
+	}
+	addLexi(){
 		this.lexi = Girl.generate({
 			scene:this,
 			x:this.sys.game.config.width/2, 
@@ -21,11 +22,6 @@ class StartScene extends Phaser.Scene {
 			texture: 'lexiBody',
 			char:'lexi'
 		})
-		this.lexi.setEmotion(3);
-		this.lexi.speak();
-		this.lexi.setClothes(2);
-		this.lexi.setAccessory(2);
-		this.lexi.setBag(1);
 	}
 	addButons(){
 		this.lb = SelectButton.generate({
@@ -44,15 +40,16 @@ class StartScene extends Phaser.Scene {
 		this.input.on("pointerdown", ()=>{
 			// this.scene.start("Game");
 			console.log('pressed');
+			this.char.littleBitZoom();
 		})
 	}
 	create(data) {
 		console.log('StartScene.create');
 		this.createBg();
-		this.addChar();
+		this.addPaul();
 		this.addButons();
 		this.setEvents();
-		console.log(this)
+		this.char = this.lexi||this.paul
 	}
 	update(){
 		// this.rb.prepare();

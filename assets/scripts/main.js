@@ -31,6 +31,5 @@ function getProp(){
 		propw,
 		propDif
 	}
-	console.log(res)
 	return res
 }

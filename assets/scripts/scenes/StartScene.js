@@ -23,6 +23,14 @@ class StartScene extends Phaser.Scene {
 			char:'lexi'
 		})
 	}
+	addText(){
+		this.topText=TextField.generate({
+			scene:this,
+			x:this.sys.game.config.width/2,
+			y:50,
+			texture:'topTextBg',
+		});
+	}
 	addButons(){
 		this.lb = SelectButton.generate({
 			scene:this,
@@ -41,12 +49,14 @@ class StartScene extends Phaser.Scene {
 			// this.scene.start("Game");
 			console.log('pressed');
 			this.char.littleBitZoom();
+			this.topText.changeText('Hello bi*ches')
 		})
 	}
-	create(data) {
+	create() {
 		console.log('StartScene.create');
 		this.createBg();
 		this.addPaul();
+		this.addText();
 		this.addButons();
 		this.setEvents();
 		this.char = this.lexi||this.paul

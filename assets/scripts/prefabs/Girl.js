@@ -1,18 +1,18 @@
 class Girl extends Boy{
 	initClothes(){
-		this.clothes = this.data.scene.add.sprite(this.x, this.y, `${this.data.char}Clothes`, 'clothes0');
+		this.clothes = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Clothes`, 'clothes0');
 		this.prepare(this.clothes);
 	}
 	initAccessory(){
-		this.accessories = this.data.scene.add.sprite(this.x, this.y, `${this.data.char}Accessories`, 'accessory0');
+		this.accessories = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Accessories`, 'accessory0');
 		this.prepare(this.accessories);
 	}
 	initBag(){
-		this.bags = this.data.scene.add.sprite(this.x, this.y, `${this.data.char}Bags`, 'bag0');
+		this.bags = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Bags`, 'bag0');
 		this.prepare(this.bags);
 	}
 	initClothesTop(){
-		this.clothesTop = this.data.scene.add.sprite(this.x, this.y, `${this.data.char}ClothesTop`, 'clothesTop0');
+		this.clothesTop = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}ClothesTop`, 'clothesTop0');
 		this.prepare(this.clothesTop);
 	}
 	

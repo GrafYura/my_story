@@ -15,7 +15,7 @@ var config = {
 			debug: false
 		},
 	},
-	scene:[BootScene, PreloadScene, StartScene],
+	scene:[BootScene, PreloadScene, IntroScene, TutorialScene],
 };
 let game = new Phaser.Game(config);
 function getProp(){

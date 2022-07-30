@@ -1,21 +1,21 @@
 class Boy extends Phaser.GameObjects.Sprite {
 	constructor(data) {
 		super(data.scene, data.x, data.y, data.texture, data.frame);
-		this.data = data
+		this.conf = data
 		this.init();
 	}
 
 	prepare(target){
 		target.setScale(this.defScale);
 		target.setOrigin(0.5)
-		this.data.y=this.data.scene.sys.game.config.height-(this.height*this.defScale/2)
-		target.y=this.data.y;
+		this.conf.y=this.conf.scene.sys.game.config.height-(this.height*this.defScale/2)
+		target.y=this.conf.y;
 
 	}
 	updateOne(target){
 		let prop = getProp();
-		let offsetY = (prop.propDif<0)?(this.data.scene.sys.game.config.height*(1-prop.proph)/2)-40:0;
-		target.y = this.data.y + offsetY;
+		let offsetY = (prop.propDif<0)?(this.conf.scene.sys.game.config.height*(1-prop.proph)/2)-40:0;
+		target.y = this.conf.y + offsetY;
 	}
 	update(){
 		this.updateOne(this);		
@@ -25,7 +25,7 @@ class Boy extends Phaser.GameObjects.Sprite {
 
 	initBody(){
 		this.prepare(this);
-		this.data.scene.scale.on('resize', this.onResize, this)
+		this.conf.scene.scale.on('resize', this.onResize, this)
 	}
 
 	onResize(){
@@ -33,20 +33,20 @@ class Boy extends Phaser.GameObjects.Sprite {
 	}
 
 	initEmotion(){
-		this.emotion = this.data.scene.add.sprite(this.x, this.y, `${this.data.char}Emotions`, 'emotion6');
+		this.emotion = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Emotions`, 'emotion6');
 		this.prepare(this.emotion);
 	}
 	initAdditional(){
 	}
 	initHair(){
-		this.hair = this.data.scene.add.sprite(this.x, this.y, `${this.data.char}Hair`);
+		this.hair = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Hair`);
 		this.prepare(this.hair);
 	}
 	initAnim(){
-		const frames = [{key: `${this.data.char}Emotions`, frame: 'emotion2'},{key: `${this.data.char}Emotions`, frame: 'emotion0'}]
+		const frames = [{key: `${this.conf.char}Emotions`, frame: 'emotion2'},{key: `${this.conf.char}Emotions`, frame: 'emotion0'}]
 
-		this.data.scene.anims.create({
-			key: `${this.data.char}Speak`,
+		this.conf.scene.anims.create({
+			key: `${this.conf.char}Speak`,
 			frames,
 			frameRate:3,
 			repeat:5,
@@ -57,16 +57,26 @@ class Boy extends Phaser.GameObjects.Sprite {
 		this.emotion.setFrame(`emotion${n}`)
 	}
 	littleBitZoom(){
-		this.data.scene.tweens.add({
+		this.conf.scene.tweens.add({
 			targets: [this, this.hair, this.emotion, this.clothes, this.clothesTop, this.accessories, this.bags],
 			scale: this.defScale+0.05,
 			ease: 'Linear',
-			duration:200
+			duration:this.conf.scene.animDuration
 		});
 	}
+	move(x,dur=undefined){
+		this.conf.x=x;
+		this.conf.scene.tweens.add({
+			targets: [this, this.hair, this.emotion, this.clothes, this.clothesTop, this.accessories, this.bags],
+			x:x,
+			ease: 'Linear',
+			duration: dur||this.conf.scene.animDuration
+		});
+		this.update()
+	}
 	init(){
-		this.defScale = this.data.scene.sys.game.config.height/this.height;
-		this.data.scene.add.existing(this);
+		this.defScale = this.conf.scene.sys.game.config.height/this.height;
+		this.conf.scene.add.existing(this);
 		this.initBody();
 		this.initEmotion();
 		this.initAdditional();
@@ -75,7 +85,7 @@ class Boy extends Phaser.GameObjects.Sprite {
 		this.update();
 	}
 	speak(){
-		this.emotion.play(`${this.data.char}Speak`);
+		this.emotion.play(`${this.conf.char}Speak`);
 	}
 	static generate(data){
 		return new Boy(data);

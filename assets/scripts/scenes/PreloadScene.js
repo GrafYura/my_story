@@ -16,6 +16,8 @@ class PreloadScene extends Phaser.Scene {
 		this.load.image('paulHair', '/assets/sprites/male/hair.png');
 		
 		this.load.atlas('paulEmotions', '/assets/sprites/male/emotions.png', '/assets/sprites/male/emotions.json');
+
+		this.load.atlas('switch', '/assets/sprites/switch.png', '/assets/sprites/switch.json');
 		
 		this.load.image('SB_accessory1', '/assets/sprites/selectButtons/accessory1.png');
 		this.load.image('SB_accessory2', '/assets/sprites/selectButtons/accessory2.png');

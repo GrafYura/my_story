@@ -16,6 +16,47 @@ class SelectButton extends Phaser.GameObjects.Sprite{
 		this.prepare();
 		this.update();
 		this.conf.scene.scale.on('resize', this.onResize, this)
+		this.setInteractive();
+		this.on('pointerdown', this.setVal, this)
+	}
+	setVal(){
+		if(this.conf.scene.staffSelected)
+			return;
+		this.conf.scene.staffSelected=1;
+		this.conf.scene.tweens.add({
+			targets: this,
+			scale:this.defScale*0.8,
+			ease: 'Linear',
+			duration:this.conf.scene.animDuration/2,
+			onComplete:()=>{
+				this.conf.scene.tweens.add({
+					targets: this,
+					scale:this.defScale,
+					ease: 'Linear',
+					duration:this.conf.scene.animDuration/2,
+				})
+			}
+		})
+		if(this.conf.scene.pointerStartTimer){
+			this.conf.scene.pointerStartTimer.remove();
+		}
+		if(this.conf.scene.pointerTimer){
+			this.conf.scene.pointerTimer.remove();
+			this.conf.scene.pointer.destroy();
+		}
+		let params = this.conf.params;
+		let values = this.conf.values;
+		if(Array.isArray(params)){
+			params.forEach((p,i)=>{
+				this.conf.scene.lexi.conf[p]=values[i];
+			})
+		}
+		else{
+			this.conf.scene.lexi.conf[params]=values;
+		}
+		this.conf.scene.lexi.updateFrames();
+		this.conf.scene.events.emit('lexiChanged');
+
 	}
 	onResize(){
 		this.update();

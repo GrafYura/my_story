@@ -33,7 +33,7 @@ class Boy extends Phaser.GameObjects.Sprite {
 	}
 
 	initEmotion(){
-		this.emotion = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Emotions`, 'emotion6');
+		this.emotion = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Emotions`, this.conf.emotion);
 		this.prepare(this.emotion);
 	}
 	initAdditional(){
@@ -53,13 +53,14 @@ class Boy extends Phaser.GameObjects.Sprite {
 		});
 	}
 
-	setEmotion(n){
-		this.emotion.setFrame(`emotion${n}`)
+	setEmotion(){
+		this.emotion.setFrame(`emotion${this.conf.emotion}`)
 	}
 	littleBitZoom(){
+		this.defScale +=0.05;
 		this.conf.scene.tweens.add({
 			targets: [this, this.hair, this.emotion, this.clothes, this.clothesTop, this.accessories, this.bags],
-			scale: this.defScale+0.05,
+			scale: this.defScale,
 			ease: 'Linear',
 			duration:this.conf.scene.animDuration
 		});

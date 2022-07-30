@@ -1,18 +1,18 @@
 class Girl extends Boy{
 	initClothes(){
-		this.clothes = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Clothes`, 'clothes0');
+		this.clothes = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Clothes`, this.conf.clothes);
 		this.prepare(this.clothes);
 	}
 	initAccessory(){
-		this.accessories = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Accessories`, 'accessory0');
+		this.accessories = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Accessories`, this.conf.assessory);
 		this.prepare(this.accessories);
 	}
 	initBag(){
-		this.bags = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Bags`, 'bag0');
+		this.bags = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Bags`, this.conf.bag);
 		this.prepare(this.bags);
 	}
 	initClothesTop(){
-		this.clothesTop = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}ClothesTop`, 'clothesTop0');
+		this.clothesTop = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}ClothesTop`, this.conf.clothesTop);
 		this.prepare(this.clothesTop);
 	}
 	
@@ -44,6 +44,19 @@ class Girl extends Boy{
 		this.updateOne(this.accessories);		
 		this.updateOne(this.bags);		
 		this.updateOne(this.clothesTop);		
+	}
+	updateFrames(){
+		Poof.generate(this.conf.scene, this.x, this.y);
+		this.conf.scene.time.addEvent({
+			delay:300,
+			callback:()=>{
+				this.clothes.setFrame(this.conf.clothes);
+				this.accessories.setFrame(this.conf.accessory);
+				this.bags.setFrame(this.conf.bag);
+				this.clothesTop.setFrame(this.conf.clothesTop);	
+			},
+			callbackScope:this,
+		})
 	}
 
 	static generate(data){

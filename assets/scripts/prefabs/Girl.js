@@ -4,7 +4,7 @@ class Girl extends Boy{
 		this.prepare(this.clothes);
 	}
 	initAccessory(){
-		this.accessories = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Accessories`, this.conf.assessory);
+		this.accessories = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Accessories`, this.conf.accessory);
 		this.prepare(this.accessories);
 	}
 	initBag(){
@@ -37,6 +37,7 @@ class Girl extends Boy{
 	}
 
 	update(){
+		getProp()
 		this.updateOne(this);		
 		this.updateOne(this.emotion);		
 		this.updateOne(this.hair);		

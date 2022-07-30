@@ -62,10 +62,11 @@ class SelectButton extends Phaser.GameObjects.Sprite{
 		this.update();
 	}
 	update(){
-		let prop = getProp();
+		getProp()
+		let sKoef = prop.propDif<0.15?1.2:0.6
 		this.offsetScale =(prop.propDif>0.6)?1-(prop.propDif-0.6)/2:1;
-		this.offsetX = this.width*this.defScale*0.6*this.offsetScale*(this.conf.left?-1:1)
-		this.offsetY = (prop.propDif<0)?(-this.height*(1-prop.proph)/2)+40:0;
+		this.offsetX = this.width*this.defScale*sKoef*this.offsetScale*(this.conf.left?-1:1)
+		this.offsetY = (prop.propDif<-0.15)?(-this.height*(-prop.propDif-0.15)/2):0;
 		this.y=this.defY + this.offsetY;
 		this.x=this.defX + this.offsetX;
 		this.setScale(this.defScale * this.offsetScale);

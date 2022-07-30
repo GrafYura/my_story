@@ -15,9 +15,12 @@ var config = {
 			debug: false
 		},
 	},
-	scene:[BootScene, PreloadScene, IntroScene, TutorialScene],
+	scene:[BootScene, PreloadScene, IntroScene, TutorialScene, Round1Scene, Round2Scene, Round3Scene, AmazingScreenScene, LooseScreenScene, EndScene],
 };
 let game = new Phaser.Game(config);
+var prop = {};
+getProp();
+var url = "https://apps.apple.com/us/app/id1491717191" 
 function getProp(){
 	let h = window.innerHeight;
 	let w = window.innerWidth;
@@ -31,5 +34,5 @@ function getProp(){
 		propw,
 		propDif
 	}
-	return res
+	prop=res
 }

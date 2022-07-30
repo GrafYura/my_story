@@ -1,31 +1,25 @@
-class TutorialScene extends Scene{
+class Round2Scene extends Scene{
 	constructor(){
-		super("Tutorial");
+		super("Round2");
 	}
 	create(data){
 		this.buttonToPoint=0;
 		this.staffSelected=0;
 		this.createBg();
-		this.addDarkLayout();
 		this.lexi=Girl.generate({...data.lexi, scene:this});
-		this.lexi.littleBitZoom();
-		this.lexi.conf.emotion=3;
-		this.lexi.setEmotion();
-		this.delayedCall(()=>{
-			this.addButtons();
-			this.addTopText('Choose your dress');
-		},this.animDuration),
+		this.addButtons();
+		this.addTopText('Choose your accessory');
 		this.pointerStartTimer = this.delayedCall(this.startMovingPointer, 2000);
 		this.setEvents()
 	}
 	setEvents(){
 		this.events.once("lexiChanged", ()=>{
 			this.delayedCall(()=>{
-				this.lexi.conf.emotion=0;
+				this.lexi.conf.emotion=5;
 				this.lexi.setEmotion();
 			},this.animDuration);
 			this.delayedCall(()=>{
-				this.scene.start("Round1", {lexi:this.lexi.conf})
+				this.scene.start("Round3", {lexi:this.lexi.conf})
 			},this.animDuration*2)
 			
 		}, this)
@@ -33,17 +27,17 @@ class TutorialScene extends Scene{
 	addButtons(){
 		this.lb = SelectButton.generate({
 			scene:this,
-			texture:'SB_clothes1',
+			texture:'SB_accessory1',
 			left:true,
-			params:['clothes','clothesTop'],
-			values:['clothes1', 'clothesTop1']
+			params:'accessory',
+			values:'accessory1'
 		})
 		this.rb = SelectButton.generate({
 			scene:this,
-			texture:'SB_clothes2',
+			texture:`SB_accessory${this.lexi.conf.clothes=='clothes1'?2:3}`,
 			left:false,
-			params:['clothes','clothesTop'],
-			values:['clothes2', 'clothesTop2']
+			params:'accessory',
+			values:`accessory${this.lexi.conf.clothes=='clothes1'?2:3}`
 		})
 	}
 }

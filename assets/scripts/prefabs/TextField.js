@@ -14,7 +14,7 @@ class TextField extends Phaser.GameObjects.Sprite {
 	}
 	
 	addText(){
-		this.text = this.conf.scene.add.text(this.x, this.y, "Choose your dress", {
+		this.text = this.conf.scene.add.text(this.x, this.y, this.conf.text, {
 			font: '36px NunitoSans',
 			fill: '#ffffff',
 		}).setOrigin(0.5);
@@ -46,11 +46,10 @@ class TextField extends Phaser.GameObjects.Sprite {
 	}
 
 	update(){
-		let prop = getProp();
-		this.offsetY = (prop.propDif<0)?(this.scene.sys.game.config.height*(1-prop.proph)/2)-40:0;
+		getProp()
+		this.offsetY = (prop.propDif<0)?(this.conf.scene.sys.game.config.height*(-prop.propDif)/2)+20:0;
 		this.y=this.conf.y + this.offsetY;
 		this.text.y=this.conf.y + this.offsetY;
-		console.log(this.height)
 	}
 
 	onResize(){

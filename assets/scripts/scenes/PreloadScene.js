@@ -31,15 +31,15 @@ class PreloadScene extends Phaser.Scene {
 		
 		this.load.image('speach_Paul1', '/assets/sprites/speaches/Paul1.png');
 		this.load.image('speach_Paul2', '/assets/sprites/speaches/Paul2.png');
+		this.load.image('speach_Paul3', '/assets/sprites/speaches/Paul3.png');
 		this.load.image('speach_Lexi1', '/assets/sprites/speaches/Lexi1.png');
 		
 		this.load.image('playNow', '/assets/sprites/playNow.png');
+		this.load.image('tryAgain', '/assets/sprites/tryAgain.png');
 		this.load.image('pointer', '/assets/sprites/pointer.png');
 		this.load.image('topTextBg', '/assets/sprites/topTextBg.png');
-		console.log('PreloadScene.preload');
 	}
 	create() {
-		console.log('PreloadScene.create');
 		this.scene.start('Start');
 	}
 }

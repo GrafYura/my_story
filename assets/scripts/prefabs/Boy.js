@@ -6,18 +6,20 @@ class Boy extends Phaser.GameObjects.Sprite {
 	}
 
 	prepare(target){
-		target.setScale(this.defScale);
+		target.setScale(this.conf.defScale+this.conf.offsetScale);
 		target.setOrigin(0.5)
-		this.conf.y=this.conf.scene.sys.game.config.height-(this.height*this.defScale/2)
+		this.conf.y=this.conf.scene.sys.game.config.height-(this.height*this.conf.defScale/2)
 		target.y=this.conf.y;
 
 	}
 	updateOne(target){
-		let prop = getProp();
-		let offsetY = (prop.propDif<0)?(this.conf.scene.sys.game.config.height*(1-prop.proph)/2)-40:0;
+		this.offsetScale2 =(prop.propDif<-0.05)?1-(-prop.propDif/1.5):1;
+		let offsetY = (prop.propDif<-0.25)?(this.conf.scene.sys.game.config.height*(-prop.propDif-0.25)*this.offsetScale2/2):0;
+		target.setScale((this.conf.defScale+this.conf.offsetScale)*this.offsetScale2);
 		target.y = this.conf.y + offsetY;
 	}
 	update(){
+		getProp()
 		this.updateOne(this);		
 		this.updateOne(this.emotion);		
 		this.updateOne(this.hair);
@@ -33,7 +35,7 @@ class Boy extends Phaser.GameObjects.Sprite {
 	}
 
 	initEmotion(){
-		this.emotion = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Emotions`, this.conf.emotion);
+		this.emotion = this.conf.scene.add.sprite(this.x, this.y, `${this.conf.char}Emotions`, `emotion${this.conf.emotion}`);
 		this.prepare(this.emotion);
 	}
 	initAdditional(){
@@ -57,10 +59,10 @@ class Boy extends Phaser.GameObjects.Sprite {
 		this.emotion.setFrame(`emotion${this.conf.emotion}`)
 	}
 	littleBitZoom(){
-		this.defScale +=0.05;
+		this.conf.offsetScale = 0.05;
 		this.conf.scene.tweens.add({
 			targets: [this, this.hair, this.emotion, this.clothes, this.clothesTop, this.accessories, this.bags],
-			scale: this.defScale,
+			scale: (this.conf.defScale+this.conf.offsetScale)*this.offsetScale2,
 			ease: 'Linear',
 			duration:this.conf.scene.animDuration
 		});
@@ -76,7 +78,12 @@ class Boy extends Phaser.GameObjects.Sprite {
 		this.update()
 	}
 	init(){
-		this.defScale = this.conf.scene.sys.game.config.height/this.height;
+		if(!this.conf.defScale){
+			this.conf.defScale = this.conf.scene.sys.game.config.height/this.height;
+		}
+		if(!this.conf.offsetScale){
+			this.conf.offsetScale = 0;
+		}
 		this.conf.scene.add.existing(this);
 		this.initBody();
 		this.initEmotion();
@@ -85,8 +92,12 @@ class Boy extends Phaser.GameObjects.Sprite {
 		this.initAnim();
 		this.update();
 	}
-	speak(){
+	speak(endEmotion){
 		this.emotion.play(`${this.conf.char}Speak`);
+		this.emotion.once('animationcomplete', ()=>{ if(endEmotion){
+			this.conf.emotion=endEmotion;
+			this.setEmotion();
+		}})
 	}
 	static generate(data){
 		return new Boy(data);

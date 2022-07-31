@@ -1,8 +1,17 @@
-class PreloadScene extends Phaser.Scene { 
+class PreloadScene extends Scene { 
 	constructor(){
 		super("Preload");
 	}
-	preload() {
+	preload(){
+		this.createBg();
+		this.add.text(this.sys.game.config.width/2, this.sys.game.config.height/2, 'Loading', {
+			font: '45px NunitoSans',
+			fill: '#ffffff',
+		}).setOrigin(0.5);
+		this.preloadAssets();
+
+	}
+	preloadAssets() {
 		this.load.image('lexiBody', '/assets/sprites/female/body.png');
 		this.load.image('lexiHair', '/assets/sprites/female/hair.png');
 		
@@ -41,5 +50,6 @@ class PreloadScene extends Phaser.Scene {
 	}
 	create() {
 		this.scene.start('Start');
+		// console.log('loaded')
 	}
 }
